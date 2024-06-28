@@ -14,14 +14,6 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_m21.mk \
-    $(LOCAL_DIR)/twrp_m31.mk \
-    $(LOCAL_DIR)/twrp_m31s.mk \
-    $(LOCAL_DIR)/twrp_a51.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_a51.mk
 
-COMMON_LUNCH_CHOICES := \
-    twrp_m21-eng \
-    twrp_m31-eng \
-    twrp_m31s-eng \
-    twrp_a51-eng
+COMMON_LUNCH_CHOICES := twrp_a51-eng

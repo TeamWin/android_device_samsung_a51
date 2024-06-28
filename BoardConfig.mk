@@ -10,7 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-DEVICE_PATH := device/samsung/universal9611
+DEVICE_PATH := device/samsung/a51
 
 # Architecture
 TARGET_ARCH := arm64
@@ -51,6 +51,9 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 -
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_IMAGE_NAME := Image
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/recovery_dtbo
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
 
 # Platform
 TARGET_BOARD_PLATFORM := exynos9611
@@ -67,15 +70,16 @@ BOARD_BOOTIMAGE_PARTITION_SIZE     := 61865984
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 71102464
 BOARD_DTBOIMG_PARTITION_SIZE       := 8388608
 
-# Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_DEFAULT_BRIGHTNESS := 200
+TW_MAX_BRIGHTNESS := 365
+TW_Y_OFFSET := 98
+TW_H_OFFSET := -98
+TW_USE_SAMSUNG_HAPTICS := true
 TW_EXCLUDE_APEX := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_INCLUDE_RESETPROP := true
@@ -100,6 +104,3 @@ BOARD_SUPER_PARTITION_SIZE := 8011120640
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 8011120640
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product odm
-
-# Custom Source
-ALLOW_LOGICAL_PARTITION_WIPE := true
